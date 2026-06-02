@@ -15,13 +15,13 @@ void fractalArbol(Turtle *t, float l, int p, float a, float t1, float t2){
   turtleForward(t, l);
 
   turtleLeft(t, a);
-  fractalArbol(t, l * t1, p - 1, a);
+  fractalArbol(t, l * t1, p - 1, a, t1, t2);
 
   turtleRight(t, a);
-  fractalArbol(t, l * (t1 + t2)/2.0, p - 1, a);
+  fractalArbol(t, l * (t1 + t2)/2.0, p - 1, a, t1, t2);
 
   turtleRight(t, a);
-  fractalArbol(t, l * t2, p - 1, a);
+  fractalArbol(t, l * t2, p - 1, a, t1, t2);
 
   turtleLeft(t, a);
   turtleBackward(t, l);
