@@ -5,7 +5,7 @@ void fractalArbol(Turtle *t, float l, int p, float a, float t1, float t2){
   if(p == 0 || l < 5)
     return;
   //es en este cambio donde pasa de colorear simulando un arbol a ir bajando por una escala de grises, siendo las copas de los árboles los puntos más claros
-  turtleSetColor(t, (255 - ((10 * p) % 256)), (255 - ((10 * p) % 256)), (255 - ((10 * p) % 256)));
+  turtleSetColor(t, (255 - ((50 * p) % 256)), (255 - ((40 * p) % 256)), (255 - ((50 * p) % 256)));
   
   turtleForward(t, l);
 
@@ -18,8 +18,10 @@ void fractalArbol(Turtle *t, float l, int p, float a, float t1, float t2){
   turtleRight(t, a);
   fractalArbol(t, l * t2, p - 1, a, t1, t2);
 
+  turtlePenUp(t);
   turtleLeft(t, a);
   turtleBackward(t, l);
+  turtlePenDown(t);
 }
 
 int main(void){
