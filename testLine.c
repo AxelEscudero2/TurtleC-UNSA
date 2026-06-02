@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "../turtlec.h"
 
-void fractalArbol(Turtle *t, float l, int p, float a){
+void fractalArbol(Turtle *t, float l, int p, float a, float t1, float t2){
   if(p == 0 || l < 5)
     return;
   
@@ -15,13 +15,13 @@ void fractalArbol(Turtle *t, float l, int p, float a){
   turtleForward(t, l);
 
   turtleLeft(t, a);
-  fractalArbol(t, l * 0.5, p - 1, a);
-//con este añadido ahora si tiene 3 ramas
-  turtleRight(t, a);
-  fractalArbol(t, l * 0.5, p - 1, a);
+  fractalArbol(t, l * t1, p - 1, a);
 
   turtleRight(t, a);
-  fractalArbol(t, l * 0.5, p - 1, a);
+  fractalArbol(t, l * (t1 + t2)/2.0, p - 1, a);
+
+  turtleRight(t, a);
+  fractalArbol(t, l * t2, p - 1, a);
 
   turtleLeft(t, a);
   turtleBackward(t, l);
@@ -35,7 +35,7 @@ int main(void){
 
   Turtle *t = turtleAppGetTurtle(app);
   turtleLeft(t, 90.0);
-  fractalArbol(t, 80.0f, 5, 60.0);
+  fractalArbol(t, 80.0f, 5, 60.0, 0.5, 0.6);
 
   turtleAppRun(app);
   turtleAppDestroy(app);
